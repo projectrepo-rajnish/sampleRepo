@@ -1,4 +1,18 @@
 
+Git commands-
+
+git init- to make a regular directory to git diectory, it will have .git.
+git status- It tells the status of local repository
+git add .
+git add <filename>,<filename2>..
+git commit -m "commit message"
+
+git push -u origin master; After this cmd run we usually do git push
+git push origin master; If u use this initially then git push will not work every time u have to use git push origin master;
+
+
+git branch- It tells the current brach name.
+-------------------------------------------------------------------------------------------------------------------------
 Errors-
 1.
 $ git push
@@ -30,3 +44,99 @@ It tells Git:
 My local master branch should track origin/master
 After this, Git remembers:
 local master  →  origin/master
+
+
+git push <remote-name> <local-branch>:<remote-branch>
+git push origin master:master
+git push origin master:master
+Left side master = local branch.
+Right side master = remote branch.
+When only one master is written, Git assumes both names are same.
+
+
+Before running:
+
+```bash
+git push -u origin master
+```
+
+the `.git/config` file had only the core repository settings and remote information:
+
+```ini
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+
+[remote "origin"]
+	url = https://github.com/projectrepo-rajnish/sampleRepo.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+```
+
+At this point, Git knows that `origin` points to this GitHub repository:
+
+```text
+https://github.com/projectrepo-rajnish/sampleRepo.git
+```
+
+So this command works:
+
+```bash
+git push origin master
+```
+
+because we are explicitly telling Git:
+
+```text
+Push local master branch to remote origin.
+```
+
+But plain `git push` does not work yet because Git does not know which remote branch the local `master` branch should track.
+
+After running:
+
+```bash
+git push -u origin master
+```
+
+Git adds this new section in `.git/config`:
+
+```ini
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+```
+
+This means:
+
+```text
+The local branch master is now linked with the master branch on the remote named origin.
+```
+
+Now Git knows:
+
+```text
+local master  →  origin/master
+```
+
+So from next time, instead of writing:
+
+```bash
+git push origin master
+```
+
+we can simply write:
+
+```bash
+git push
+```
+
+Git will automatically understand that the current local branch `master` should be pushed to `origin/master`.
+
+Similarly, for `git pull`, Git also knows that it should fetch from `origin` and bring changes from the remote `master` branch into the local `master` branch.
+--------------------------------------------------------------------------------------------------------------------------
+
+
