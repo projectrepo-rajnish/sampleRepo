@@ -1,0 +1,32 @@
+
+Errors-
+1.
+$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+
+git push origin master-  
+this is working as expected. Meaning: Push my local master branch to the remote named origin
+
+git push-
+Git asks internally: Where should I push current branch master?
+Right now your local master branch is not linked/tracking any remote branch, so Git says:
+fatal: The current branch master has no upstream branch.
+
+Root cause- Right now my local master branch is not linked/tracking any remote branch, so Git says:
+
+fatal: The current branch master has no upstream branch.
+
+Fix- git push -u origin master
+What does -u mean?
+-u means set upstream.
+It tells Git:
+My local master branch should track origin/master
+After this, Git remembers:
+local master  →  origin/master
