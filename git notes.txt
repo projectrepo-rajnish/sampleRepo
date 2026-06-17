@@ -12,6 +12,9 @@ git push origin master; If u use this initially then git push will not work ever
 
 
 git branch- It tells the current brach name.
+
+git branch -r; It tells the all the braches under remote origin
+git stash---  ??? 
 -------------------------------------------------------------------------------------------------------------------------
 Errors-
 1.
