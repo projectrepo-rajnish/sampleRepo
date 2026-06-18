@@ -15,6 +15,14 @@ git branch- It tells the current brach name.
 
 git branch -r; It tells the all the braches under remote origin
 git stash---  ??? 
+
+How to create a new branch locally?
+git checkout -b dummy-branch
+
+Put the latest files under dummy-branch
+git push -u origin dev-branch 
+git fetch origin
+git merge origin/dev-branch
 -------------------------------------------------------------------------------------------------------------------------
 Errors-
 1.
